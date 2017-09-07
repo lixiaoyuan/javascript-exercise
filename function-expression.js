@@ -12,6 +12,7 @@
 })();
 
 //闭包和Scope
+//闭包就是能够读取其他函数内部变量的函数。
 (function () {
     console.clear();
     function createMain(pname) {
@@ -44,8 +45,8 @@
 //闭包2
 (function () {
     console.clear();
+    var data = { name: 'abcd' };
     function createMain() {
-        var data = { name: 'abcd' };
         return function () {
             return data;
         }
@@ -53,9 +54,8 @@
     var tfun = createMain();
     var t2fun = createMain();
     console.log(tfun() == t2fun());//false
-    //结论:
-    //Scope 局部变量深克隆，参数浅克隆
 })();
+//,闭包会携带包含它的函数的作用域，因此回比其他函数占用更多的内存。
 //闭包问题
 (function () {
     var result = new Array();
@@ -66,3 +66,39 @@
     }
     return result;
 })();
+
+
+
+//关于this 变量
+console.clear();
+var name = 'Then Function';
+var obj = {
+    name: 'my object',
+    getNameFunc: function () {
+        return function () {
+            return this.name;
+        };
+    }
+};
+var obj2 = {
+    name: 'my object2',
+    getname: obj.getNameFunc()
+}
+console.log(obj.getNameFunc()())//Then Function
+console.log(obj2.getname());//my object2
+console.log(obj.getNameFunc().call({name:'Then Call'}));//Then Call
+
+//闭包测试2
+console.clear();
+　function f1() {
+    var n = 999;
+    nAdd = function () { n += 1 }
+    function f2() {
+        console.log(n);
+    }
+    return f2;
+}
+var result = f1();
+result(); // 999
+nAdd();
+result(); // 1000
