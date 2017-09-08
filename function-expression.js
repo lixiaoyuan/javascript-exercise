@@ -86,7 +86,7 @@ var obj2 = {
 }
 console.log(obj.getNameFunc()())//Then Function
 console.log(obj2.getname());//my object2
-console.log(obj.getNameFunc().call({name:'Then Call'}));//Then Call
+console.log(obj.getNameFunc().call({ name: 'Then Call' }));//Then Call
 
 //闭包测试2
 console.clear();
@@ -102,3 +102,18 @@ var result = f1();
 result(); // 999
 nAdd();
 result(); // 1000
+
+//ie 内存泄露
+(
+    function () {
+        //assignHandler
+        var ele = document.getElementById('testp');
+        //解决
+        //var id=ele.id
+        ele.onclick = function () { 
+            alert(ele.id);
+            //alert(id);
+        };
+        //ele=null
+    }
+)();
