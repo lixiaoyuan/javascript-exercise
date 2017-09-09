@@ -6,13 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        div {
+            border: 1px solid dodgerblue;
+        }
+    </style>
 </head>
 
 <body>
-    <p id="testp">User b</p>
+    <div>
+        <ul id="testp" Cap="customer">
+            <li>
+                <input type="radio" value="red" name="color" id="colorRed">
+                <label for="colorRed">item 1</label>
+            </li>
+            <li> <input type="radio" value="green" name="color" id="colorGreen">
+                <label for="colorGreen">item 2</label>
+            </li>
+            <li> <input type="radio" value="blue" name="color" id="colorBlue">
+                <label for="colorBlue">item 3</label>
+            </li>
+        </ul>
+    </div>
     <script src="function-expression.js">
 
     </script>
+
+    <script src="documentobjectmodel.js"></script>
 </body>
 
 </html>

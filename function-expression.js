@@ -111,7 +111,7 @@ result(); // 1000
         //解决
         //var id=ele.id
         ele.onclick = function () { 
-            alert(ele.id);
+            console.log(ele.id);
             //alert(id);
         };
         //ele=null
